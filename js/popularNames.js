@@ -36,6 +36,10 @@ PopularNamesVis.prototype.initVis = function () {
     )
 
   // Scales and axes
+  vis.scaleColors = d3
+    .scaleOrdinal()
+    .domain(["Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"])
+    .range(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd"])
 
   // (Filter, aggregate, modify data)
   vis.wrangleData()
