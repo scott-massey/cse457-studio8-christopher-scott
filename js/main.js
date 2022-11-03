@@ -15,16 +15,23 @@ const readData = async () => {
   data.popularNames = popularNamesData
   data.dogAges = dogAgesData
 
+  let breedsBoroughData = await d3.csv("data/breeds_borough_count.csv")
+  breedsBoroughData = breedsBoroughData.map((d) => {
+    return {
+      breedName: d.BreedName,
+      boroughName: d.BoroughName,
+      count: +d.Count,
+    }
+  })
+  data.breedsBorough = breedsBoroughData
+
   createVis()
 }
 
 const createVis = () => {
-  // let popularNamesVis = new PopularNamesVis(
-  //   "popular-names-vis",
-  //   data.popularNames
-  // )
 
   let dogAgesVis = new DogAgesVis("dog-age-vis", data.dogAges)
+  let breedsBorough = new BreedsBorough("breeds-borough", data.breedsBorough)
 }
 
 readData()
