@@ -32,6 +32,7 @@ const createVis = () => {
 
   let dogAgesVis = new DogAgesVis("dog-age-vis", data.dogAges)
   let breedsBorough = new BreedsBorough("breeds-borough", data.breedsBorough)
+  let dogNamesVis = new DogNamesVis("names-vis", data.popularNames)
 }
 
 readData()

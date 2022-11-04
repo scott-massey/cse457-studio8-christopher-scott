@@ -24,7 +24,7 @@ DogAgesVis.prototype.initVis = function(){
 	vis.margin = { top: 40, right: 0, bottom: 60, left: 60 };
 
 	vis.width = 1000 - vis.margin.left - vis.margin.right,
-	vis.height = 1000 - vis.margin.top - vis.margin.bottom;
+	vis.height = 650 - vis.margin.top - vis.margin.bottom;
 
 	// SVG drawing area
 	vis.svg = d3.select("#" + vis.parentElement).append("svg")

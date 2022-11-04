@@ -17,3 +17,8 @@ a {
 .hover-text {
   font-weight: bold;
 }
+
+.name-label{
+  color: #9fa362 !important;
+  font-size: 30px;
+}
