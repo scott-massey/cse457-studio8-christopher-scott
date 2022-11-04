@@ -7,11 +7,66 @@
   </head>
 
   <body>
+    <h1>Analysis of Dog Breeds in NYC, by Borough</h1>
+    <p>
+      We gathered data about what kinds of dogs are owned where in NYC, and
+      here's what we found.
+    </p>
+    <p>
+      By
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+        >Christopher Patrick</a
+      >
+      and
+      <a
+        href="https://linkedin.com/in/scottmmassey"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Scott Massey</a
+      >
+    </p>
+    <br />
 
+    <div class="vis-container" id="breeds-borough-container">
+      <h2>Dogs breeds by borough</h2>
+      <p>
+        Shown here are what dogs breeds people in different boroughs of NYC
+        people own. The larger the circle, the more dogs of that breed are owned
+        in that borough.
+      </p>
+      <div id="breeds-borough"></div>
+    </div>
 
-    <h1>Article Title</h1>
-    <div id="breeds-borough"></div>
-    <div id="dog-age-vis"></div>
+    <div class="vis-container" id="dogs-age-container">
+      <h2>Dogs by age</h2>
+      <p>
+        Shown here are is the distribution of dogs in each borough by age. We
+        found that people generally own younger dogs in Manhattan and Brooklyn,
+        and older dogs in the other boroughs.
+      </p>
+      <div id="dog-age-vis"></div>
+    </div>
+
+    <div class="vis-container" id="names-vis-container">
+      <h2>Most popular dog names</h2>
+      <p>
+        Shown here are the most popular dog names in NYC by borough. It looks
+        like There are a lot of common names between the boroughs, such as
+        Bella, Max, Rocky and Charlie.
+      </p>
+      <div id="names-vis"></div>
+    </div>
+
+    <div class="vis-container">
+      <h2>Conclusions</h2>
+      <p>
+        Overall, the distributions between boroughs did not differ much between
+        each other. It seems like smaller breeds, such as the Chihuahua are more
+        popular. The most popular names are Bella, Max, Rocky, and Charlie. Age
+        distributions also did not vary much.
+      </p>
+    </div>
+
     <script src="js/d3.min.js"></script>
     <script src="https://unpkg.com/d3-simple-slider"></script>
     <script src="js/dogAgesVis.js"></script>

@@ -1,3 +1,19 @@
 body {
   background-color: #f8f5ed;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+a {
+  color: #000;
+  font-weight: bold;
+}
+
+.vis-container {
+  max-width: 750px;
+  margin: auto;
+}
+
+.hover-text {
+  font-weight: bold;
 }

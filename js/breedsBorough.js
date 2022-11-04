@@ -19,8 +19,8 @@ BreedsBorough.prototype.initVis = function () {
   var vis = this
 
   vis.margin = { top: 40, right: 0, bottom: 60, left: 60 }
-  vis.width = 500 - vis.margin.left - vis.margin.right
-  vis.height = 500 - vis.margin.top - vis.margin.bottom
+  vis.width = 700 - vis.margin.left - vis.margin.right
+  vis.height = 525 - vis.margin.top - vis.margin.bottom
 
   // SVG drawing area
   vis.svg = d3
@@ -46,15 +46,15 @@ BreedsBorough.prototype.initVis = function () {
         .forceX((d) => {
           switch (d.boroughName) {
             case "Manhattan":
-              return 100
+              return 200
             case "Brooklyn":
-              return 250
+              return 350
             case "Queens":
-              return 150
-            case "Bronx":
-              return 300
-            case "Staten Island":
               return 250
+            case "Bronx":
+              return 400
+            case "Staten Island":
+              return 350
           }
         })
         .strength(0.05)
@@ -92,6 +92,41 @@ BreedsBorough.prototype.initVis = function () {
     .scalePow()
     .exponent(1 / 4)
     .range([1, 12])
+
+  // Legend
+  vis.legend = vis.svg
+    .append("g")
+    .attr("class", "legend")
+    .attr("transform", "translate(0, 0)")
+    .selectAll("g")
+    .data(vis.color.domain())
+    .enter()
+    .append("g")
+    .attr("transform", (d, i) => "translate(0," + i * 20 + ")")
+
+  vis.legend
+    .append("rect")
+    .attr("x", 0)
+    .attr("width", 18)
+    .attr("height", 18)
+    .attr("fill", vis.color)
+
+  vis.legend
+    .append("text")
+    .attr("x", 22)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .style("text-anchor", "start")
+    .text((d) => d)
+
+  // Add placeholder text to the bottom for hovering
+  vis.svg
+    .append("text")
+    .attr("class", "hover-text")
+    .attr("x", vis.width / 2)
+    .attr("y", vis.height - 10)
+    .attr("text-anchor", "middle")
+    .text("Hover over a circle to see the number of dogs")
 
   // (Filter, aggregate, modify data)
   vis.wrangleData()
@@ -137,6 +172,16 @@ BreedsBorough.prototype.updateVis = function () {
     .attr("class", "node")
     .attr("r", (d) => vis.radiusScale(d.count))
     .attr("fill", (d) => vis.color(d.boroughName))
+    .on("mouseover", function (event, d) {
+      d3.select(this).attr("stroke", "black").attr("stroke-width", 1)
+      d3.select(".hover-text").text(`${d.breedName}: ${d.count}`)
+    })
+    .on("mouseout", function (event, d) {
+      d3.select(this).attr("stroke", "none")
+      d3.select(".hover-text").text(
+        "Hover over a circle to see the number of dogs of the breed in that borough"
+      )
+    })
 
   vis.simulation.on("tick", () => {
     nodes.attr("cx", (d) => d.x).attr("cy", (d) => d.y)
